@@ -16,12 +16,13 @@ public class PersonageCreator {
 
     public static Personage createValidPersonage() {
         return Personage.builder()
-                .id(1L)
                 .name("Harry Potter")
                 .role("student")
                 .school("Hogwarts School of Witchcraft and Wizardry")
                 .house("1760529f-6d51-4cb1-bcb1-25087fce5bde")
                 .patronus("stag")
+                .id(1L)
                 .build();
     }
+
 }
