@@ -1,5 +1,6 @@
 package br.com.dextra.MakeMagic.service;
 
+import br.com.dextra.MakeMagic.client.PotterApiClient;
 import br.com.dextra.MakeMagic.domain.dto.PersonageDto;
 import br.com.dextra.MakeMagic.domain.entity.Personage;
 import br.com.dextra.MakeMagic.exception.ResourceNotFoundException;
@@ -30,6 +31,9 @@ class PersonageServiceTest {
 
     @Mock
     PersonageRepository personageRepositoryMock;
+
+    @Mock
+    PotterApiClient potterApiClientMock;
 
     @BeforeEach
     void setUp() {
@@ -92,7 +96,7 @@ class PersonageServiceTest {
         BDDMockito.when(personageRepositoryMock.findByHouse(ArgumentMatchers.anyString()))
                 .thenReturn(Collections.emptyList());
 
-        List<PersonageDto> personageDtos = personageService.findByHouse("personage");
+        List<PersonageDto> personageDtos = personageService.findByHouse("123456-asfgrga");
 
         Assertions.assertThat(personageDtos)
                 .isNotNull()

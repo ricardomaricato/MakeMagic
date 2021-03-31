@@ -12,6 +12,7 @@ import br.com.dextra.MakeMagic.exception.BadRequestException;
 import br.com.dextra.MakeMagic.exception.ResourceNotFoundException;
 import br.com.dextra.MakeMagic.repository.PersonageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
