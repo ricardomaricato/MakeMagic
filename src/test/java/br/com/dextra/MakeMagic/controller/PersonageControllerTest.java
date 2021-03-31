@@ -71,6 +71,20 @@ class PersonageControllerTest {
     }
 
     @Test
+    @DisplayName("findById returns personage when successful")
+    void findById_ReturnsPersonage_WhenSuccessful() {
+        Long expectedId = PersonageCreator.createValidPersonage().getId();
+
+        ResponseEntity<PersonageDto> personageDtos = personageController.findById(1L);
+
+        Assertions.assertThat(personageDtos.getBody()).isNotNull();
+
+        Assertions.assertThat(personageDtos.getBody().getId()).isEqualTo(expectedId);
+
+        Assertions.assertThat(personageDtos.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
     @DisplayName("findByHouse returns an HttpStatus.NO_CONTENT when personage is not found")
     void findByHouse_Returns_HttpStatus_NO_CONTENT_WhenPersonageIsNotFound() {
         BDDMockito.when(personageServiceMock.findByHouse(ArgumentMatchers.anyString()))
