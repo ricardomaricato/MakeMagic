@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 @Service
@@ -63,18 +64,13 @@ public class PersonageService {
 
     public boolean isValidHouse(PersonagePostRequestBody personagePostRequestBody) {
         ResponseEntity<PotterResponse> potterResponse = potterApiClient.findHouses();
-        for (House list : potterResponse.getBody().getHouses()) {
-            if (personagePostRequestBody.getHouse().equals(list.getId()))
-                return true;
-        }
-        return false;
+        AtomicReference<Boolean> valid = new AtomicReference<>(false);
+        potterResponse.getBody().getHouses().forEach((house) -> {
+            if (personagePostRequestBody.getHouse().equals(house.getId())) {
+                valid.set(true);
+                return;
+            }
+        });
+        return valid.get();
     }
-
 }
-
-//        potterResponse.getBody().getHouses().forEach((house) -> {
-//                if (personagePostRequestBody.getHouse().equals(house.getId())) {
-//                return;
-//                }
-//                });
-//                return false;
