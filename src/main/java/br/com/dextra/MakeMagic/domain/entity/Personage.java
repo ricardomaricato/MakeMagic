@@ -24,6 +24,7 @@ public class Personage {
     private Long id;
 
     @ApiModelProperty(value = "name", example = "Harry Potter", position = 1)
+    @NotEmpty(message = "The personage name cannot be empty")
     private String name;
 
     @ApiModelProperty(value = "role", example = "student", position = 2)
