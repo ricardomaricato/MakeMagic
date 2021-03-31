@@ -1,9 +1,6 @@
 package br.com.dextra.MakeMagic.handler;
 
-import br.com.dextra.MakeMagic.exception.ExceptionDetails;
-import br.com.dextra.MakeMagic.exception.ResourceNotFoundException;
-import br.com.dextra.MakeMagic.exception.ResourceNotFoundExceptionDetails;
-import br.com.dextra.MakeMagic.exception.ValidationExceptionDetails;
+import br.com.dextra.MakeMagic.exception.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +29,18 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                         .details(nfe.getMessage())
                         .developerMessage(nfe.getClass().getName())
                         .build(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<BadRequestExceptionDetails> handlerBadRequestException(BadRequestException bre) {
+        return new ResponseEntity<>(
+                BadRequestExceptionDetails.builder()
+                        .timestamp(LocalDateTime.now())
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .title("Bad Request Exeption, Check the Documentation")
+                        .details(bre.getMessage())
+                        .developerMessage(bre.getClass().getName())
+                        .build(), HttpStatus.BAD_REQUEST);
     }
 
     @Override

@@ -1,13 +1,18 @@
 package br.com.dextra.MakeMagic.service;
 
+import br.com.dextra.MakeMagic.client.PotterApiClient;
 import br.com.dextra.MakeMagic.domain.dto.PersonageDto;
+import br.com.dextra.MakeMagic.domain.entity.House;
 import br.com.dextra.MakeMagic.domain.entity.Personage;
+import br.com.dextra.MakeMagic.domain.entity.PotterResponse;
 import br.com.dextra.MakeMagic.domain.mapper.PersonageMapper;
 import br.com.dextra.MakeMagic.domain.requests.PersonagePostRequestBody;
 import br.com.dextra.MakeMagic.domain.requests.PersonagePutRequestBody;
+import br.com.dextra.MakeMagic.exception.BadRequestException;
 import br.com.dextra.MakeMagic.exception.ResourceNotFoundException;
 import br.com.dextra.MakeMagic.repository.PersonageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +23,7 @@ import java.util.stream.Collectors;
 public class PersonageService {
 
     private final PersonageRepository personageRepository;
+    private final PotterApiClient potterApiClient;
 
     public List<PersonageDto> listAll() {
         return personageRepository.findAll().stream().map(PersonageMapper.INSTANCE::toPersonageDto)
@@ -40,6 +46,7 @@ public class PersonageService {
     }
 
     public Personage save(PersonagePostRequestBody personagePostRequestBody) {
+        if (!isValidHouse(personagePostRequestBody)) throw new BadRequestException("House Invalid");
         return personageRepository.save(PersonageMapper.INSTANCE.toPersonage(personagePostRequestBody));
     }
 
@@ -53,4 +60,21 @@ public class PersonageService {
         personage.setId(personageSaved.getId());
         personageRepository.save(personage);
     }
+
+    public boolean isValidHouse(PersonagePostRequestBody personagePostRequestBody) {
+        ResponseEntity<PotterResponse> potterResponse = potterApiClient.findHouses();
+        for (House list : potterResponse.getBody().getHouses()) {
+            if (personagePostRequestBody.getHouse().equals(list.getId()))
+                return true;
+        }
+        return false;
+    }
+
 }
+
+//        potterResponse.getBody().getHouses().forEach((house) -> {
+//                if (personagePostRequestBody.getHouse().equals(house.getId())) {
+//                return;
+//                }
+//                });
+//                return false;
