@@ -8,15 +8,13 @@ import br.com.dextra.MakeMagic.repository.PersonageRepository;
 import br.com.dextra.MakeMagic.util.PersonageCreator;
 import br.com.dextra.MakeMagic.util.PersonagePostRequestBodyCreator;
 import br.com.dextra.MakeMagic.util.PersonagePutRequestBodyCreator;
+import org.aspectj.lang.annotation.Before;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
-import org.mockito.BDDMockito;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.mockito.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Collections;

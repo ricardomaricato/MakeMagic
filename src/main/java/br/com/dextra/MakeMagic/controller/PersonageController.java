@@ -98,6 +98,7 @@ public class PersonageController {
     @ApiOperation(value = "Delete Personage")
     @ApiResponses(value = {
             @ApiResponse(code = HttpServletResponse.SC_NO_CONTENT, message = "Deleted Personage"),
+            @ApiResponse(code = HttpServletResponse.SC_INTERNAL_SERVER_ERROR, message = "Internal Server Error"),
     })
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         personageService.delete(id);
