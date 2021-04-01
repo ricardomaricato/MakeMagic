@@ -2,7 +2,6 @@ package br.com.dextra.MakeMagic.service;
 
 import br.com.dextra.MakeMagic.client.PotterApiClient;
 import br.com.dextra.MakeMagic.domain.dto.PersonageDto;
-import br.com.dextra.MakeMagic.domain.entity.House;
 import br.com.dextra.MakeMagic.domain.entity.Personage;
 import br.com.dextra.MakeMagic.domain.entity.PotterResponse;
 import br.com.dextra.MakeMagic.domain.mapper.PersonageMapper;
@@ -12,7 +11,6 @@ import br.com.dextra.MakeMagic.exception.BadRequestException;
 import br.com.dextra.MakeMagic.exception.ResourceNotFoundException;
 import br.com.dextra.MakeMagic.repository.PersonageRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
