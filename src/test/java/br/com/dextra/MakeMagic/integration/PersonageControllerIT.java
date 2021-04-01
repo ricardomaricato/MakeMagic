@@ -48,8 +48,7 @@ public class PersonageControllerIT {
 
         Assertions.assertThat(personages)
                 .isNotNull()
-                .isNotEmpty()
-                .hasSize(4);
+                .isNotEmpty();
 
         Assertions.assertThat(personages.get(0).getName()).isEqualTo(expectedName);
     }
@@ -83,8 +82,7 @@ public class PersonageControllerIT {
 
         Assertions.assertThat(personages)
                 .isNotNull()
-                .isNotEmpty()
-                .hasSize(3);
+                .isNotEmpty();
 
         Assertions.assertThat(personages.get(0).getHouse()).isEqualTo(expectedHouse);
     }
