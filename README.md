@@ -1,3 +1,25 @@
+# Make Magic API
+
+### Versão
+- V1.0.0 - 03/04/2021
+
+### Java Version
+- 11
+
+### Docker Version
+- 20.10.1
+
+### Docker Compose Version
+- 1.17.1
+
+### Instruções local
+- Baixar o código do repositório remoto;
+- Iniciar a imagem do banco de dados MySql "docker-compose up" (Windows) ou "sudo docker-compose up" (Linux);
+- Iniciar a classe MakeMagicApplication.
+
+### Swagger - [URL](http://localhost:8080/swagger-ui.html)
+
+
 # Faça a magia - Desafio de backend
 
 Olá! Obrigado por ter se aplicado para essa vaga, esperamos que você aprenda algo novo.
