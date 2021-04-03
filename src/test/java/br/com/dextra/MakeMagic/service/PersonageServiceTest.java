@@ -3,11 +3,10 @@ package br.com.dextra.MakeMagic.service;
 import br.com.dextra.MakeMagic.client.PotterApiClient;
 import br.com.dextra.MakeMagic.domain.dto.PersonageDto;
 import br.com.dextra.MakeMagic.domain.entity.Personage;
+import br.com.dextra.MakeMagic.domain.entity.PotterResponse;
 import br.com.dextra.MakeMagic.exception.ResourceNotFoundException;
 import br.com.dextra.MakeMagic.repository.PersonageRepository;
-import br.com.dextra.MakeMagic.util.PersonageCreator;
-import br.com.dextra.MakeMagic.util.PersonagePostRequestBodyCreator;
-import br.com.dextra.MakeMagic.util.PersonagePutRequestBodyCreator;
+import br.com.dextra.MakeMagic.util.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,6 +16,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Collections;
@@ -50,6 +50,9 @@ class PersonageServiceTest {
                 .thenReturn(PersonageCreator.createValidPersonage());
 
         BDDMockito.doNothing().when(personageRepositoryMock).delete(ArgumentMatchers.any(Personage.class));
+
+        BDDMockito.when(potterApiClientMock.findHouses())
+                .thenReturn(PotterCreatorResponse.createValidPotterResponse());
     }
 
 
