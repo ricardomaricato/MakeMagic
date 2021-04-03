@@ -29,7 +29,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Make Magic API")
-                .version("1.0.0")
+                .version("V1.0.0")
                 .contact(new Contact("Ricardo Maricato",
                         "https://github.com/RicardoMaricato",
                         "ricardo.maricato@hotmail.com"))

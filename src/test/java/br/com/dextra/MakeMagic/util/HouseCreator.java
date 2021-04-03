@@ -2,6 +2,8 @@ package br.com.dextra.MakeMagic.util;
 
 import br.com.dextra.MakeMagic.domain.entity.House;
 
+import java.util.List;
+
 public class HouseCreator {
 
     public static House creatValidHouse() {
@@ -12,6 +14,8 @@ public class HouseCreator {
                 .mascot("lion")
                 .houseGhost("Nearly Headless Nick")
                 .founder("Goderic Gryffindor")
+                .colors(List.of(ColorCreator.creatValidColor()))
+                .values(List.of(ValueCreator.creatValidValue()))
                 .build();
     }
 }
