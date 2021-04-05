@@ -22,12 +22,6 @@
 
 # Faça a magia - Desafio de backend
 
-Olá! Obrigado por ter se aplicado para essa vaga, esperamos que você aprenda algo novo.
-
-O principal objetivo desde desafio é ver como você trabalha e como soluciona problemas.
-
-Então, vamos começar.
-
 ## Introdução
 
 Este desafio consiste em criar uma API REST para cumprir alguns requisitos.
